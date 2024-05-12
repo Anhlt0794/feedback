@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/Actions-document-save-icon.png" />
+    </f:facet>
+    <title>Log In</title>
+		<h:outputStylesheet name="main/css/styleLoginForm.css"></h:outputStylesheet>
+		<h:outputStylesheet name="main/hien.css"></h:outputStylesheet>
+</h:head> 
+<body>
+ <h:form>
+       	  <div class="container">
+                <div id="adminLoginForm" >
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                         <p:growl id="growl" showDetail="true" sticky="true"></p:growl>
+                         		
+                                <h1>Log In </h1> 
+                                <p> 
+                                    <label for="username" class="uname" data-icon="u" >User Name:</label>
+                                    <h:inputText  id="username" name="username" required="required"  a:placeholder="SuhoSauge" value="#{loginBean.manager.managerNo}"/>
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" data-icon="p">Password:</label>
+                                    
+                                    <h:inputSecret id="password" name="password" required="required" a:placeholder="eg. X8df!90EO"  value="#{loginBean.manager.managerPass}"/> 
+                                </p><br />
+                                <p class="login button"> 
+                                   <h:commandButton action="#{loginBean.loginManager()}" value="Log In"  />
+								</p>
+                        </div>
+                    </div>
+                </div>  
+        </div>
+       </h:form>
+  
+</body> 
+</html>

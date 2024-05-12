@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTheme.xhtml">
+	<ui:define name="content-header">
+		<section class="content-header">
+			<h1>
+				View Detail<small>View Subject</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#{request.contextPath}/admin/"><i
+						class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#{request.contextPath}/admin/subject/view.html">View Subject</a></li>
+				<li class="active">Detail</li>
+			</ol>
+		</section>
+	</ui:define>
+	<ui:define name="content-main">
+		<!-- Small boxes (Stat box) -->
+		<div class="row">
+			<div class="col-md-12">
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" />
+			
+				<h:form>
+					<div class="box box-primary">
+						<div class="box-header">
+							<h3 class="box-title">Edit Code</h3>
+							<p:selectOneMenu value="#{svb.edit}" converter="#{cs}">
+								<f:selectItems value="#{svb.select}" var="s" itemLabel="#{s.subjectNo}" itemValue="#{s}" />
+								<p:ajax listener="#{svb.loadEditTmp()}" update="input-form"></p:ajax>
+							</p:selectOneMenu>
+							
+						</div>
+						<h:panelGroup id="input-form">
+						<div class="box-body">
+							<div class="panel panel-default">
+								<div class="panel-heading"> 
+									<h3 class="box-title">ID: #{svb.editTmp.subjectNo} ; Name: #{svb.editTmp.subjectName} </h3>
+									<div class="btn-group">
+									 <p:commandButton value="View" icon="ui-icon-extlink" styleClass="btn btn-default" action="#{svb.view('v')}" />
+									  <p:commandButton value="Edit" icon="ui-icon-extlink" styleClass="btn btn-default" action="#{svb.view('e')}" />
+									  <p:commandButton value="Edit List Teacher" icon="ui-icon-extlink" styleClass="btn btn-default" action="#{vcb.viewCode('ct')}" />
+									</div>
+								</div>
+								<p:dataTable id="viewDT" var="s" value="#{svb.editTmp.teacher}"  selection="#{svb.selectTeaher}"  rowKey="#(#{s.teacherNo})}">
+									<p:column selectionMode="multiple" style="width:40px;text-align:center"/>
+									<p:column headerText="Id">
+										<h:outputText value="#{s.teacherNo}" />
+									</p:column>
+									<p:column headerText="Name">
+										<h:outputText value="#{s.teacherName}" />
+									</p:column>
+									<p:column headerText="Gender">
+										<h:outputText value="#{s.genderString()}" />
+									</p:column>
+									<p:column headerText="Email">
+										<h:outputText value="#{s.teacherEmail}" />
+									</p:column>
+									<p:column headerText="Phone">
+										<h:outputText value="#{s.teacherPhone}" />
+									</p:column>
+									
+								</p:dataTable>
+							</div>
+							
+						</div>
+						</h:panelGroup>
+						<div class="box-footer">
+						
+						</div>
+					</div>
+				</h:form>
+				
+			</div>
+		</div>
+
+		<!-- /.row (main row) -->
+	</ui:define>
+
+
+
+</ui:composition>

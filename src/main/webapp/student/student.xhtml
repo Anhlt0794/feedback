@@ -1,0 +1,108 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="description" content="Feedback online" />
+		<meta name="author" content="Hien" />
+		<link rel="shortcut icon" type="image/png"
+			href="#{request.contextPath}/resources/main/images/favicon.ico" />
+	</f:facet>
+	<title>Feedback Student</title>
+	<h:outputScript library="primefaces" name="jquery/jquery.js"
+		target="head" />
+	<h:outputScript library="primefaces" name="jquery/jquery-plugins.js"
+		target="head" />
+	<h:outputStylesheet library="webjars"
+		name="bootstrap/3.3.4/css/bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="webjars"
+		name="bootstrap/3.3.4/css/bootstrap-jsf.css"></h:outputStylesheet>
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/4.3.0/css/font-awesome-jsf.css" />
+	<h:outputStylesheet library="webjars"
+		name="ionicons/2.0.1/css/ionicons.min.css"></h:outputStylesheet>
+	<h:outputStylesheet name="/main/css/student.css"></h:outputStylesheet>
+</h:head>
+<body class="body">
+	<h:form>
+		<p:panel id="btlg" visible="#{!loginBeanStu.studentIslogin}">
+			<h:commandButton value="Login" type="button"
+				styleClass="btn btn-lg btn-success btn-block"
+				onclick="PF('dlg1').show();" />
+		</p:panel>
+
+		<p:dialog header="Login" widgetVar="dlg1" id="dialog">
+			<h:form id="formlogin">
+				<p:panel id="panellogin" visible="#{!loginBeanStu.studentIslogin}">
+					<p:outputLabel for="username" value="User: "></p:outputLabel>
+					<h:inputText value="#{loginBeanStu.username}" id="username"
+						styleClass="form-control" pt:placeholder="xxxxxxx" required="true" />
+					<p:outputLabel for="password" value="Password: "></p:outputLabel>
+					<h:inputSecret value="#{loginBeanStu.password}" id="password"
+						styleClass="form-control" pt:placeholder="eg. X8df!90EO"
+						required="true" />
+					<h:commandButton id="loginb" value="Login"
+						styleClass="btn btn-lg btn-success btn-block"
+						action="#{loginBeanStu.loginStudent}">
+						<!-- khoong them f:ajax o day -->
+					</h:commandButton>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+		<p:panel id="panellogout" visible="#{loginBeanStu.studentIslogin}">
+			<h:outputText value="#{loginBeanStu.student.studentName}  " />
+			<h:commandButton id="logout" value="Logout"
+				styleClass="btn btn-lg btn-success btn-block"
+				action="#{loginBeanStu.logout}">
+				<p:ajax update="panellogout dialog :tab1 btlg">
+				</p:ajax>
+			</h:commandButton>
+		</p:panel>
+	</h:form>
+
+	<h:form id="tab1">
+		<p:panel visible="#{!loginBeanStu.studentIslogin}">
+			<h2 translate="yes" style="color: blue;" align="center">Chào
+				mừng bạn đến với hệ thống quản ý đánh giá mức độ hài lòng môn học
+				của trường Đại học Nông Lâm TP.HCM</h2>
+			<h3 translate="yes" style="color: red;" align="center">Hãy đăng
+				nhập để tiếp tục sử dụng!</h3>
+		</p:panel>
+		<p:panel visible="#{loginBeanStu.studentIslogin}">
+			<p:tabView>
+				<p:tab title="#{msgs.infor}">
+					<ui:include src="/student/inforStudent.xhtml" />
+				</p:tab>
+
+				<p:tab title="#{msgs.viewlistsubject}">
+					<ui:include src="/student/listSubject.xhtml" />
+				</p:tab>
+				<p:tab title="#{msgs.assessmentSubject}">
+					<ui:include src="/student/tableFeedback.xhtml" />
+				</p:tab>
+				<p:tab title="#{msgs.reviewAssessment}">
+					<ui:include src="/student/review.xhtml" />
+				</p:tab>
+			</p:tabView>
+		</p:panel>
+	</h:form>
+	<!-- footer -->
+	<h4 style="color: green;">Hệ thống quản lý ý kiến đánh giá</h4>
+	<h4 style="color: olive;">Giáo viên hướng dẫn: Phạm Văn Tính</h4>
+	<h5 style="color: blue;">
+		Thành viên: <br />Nguyễn Minh Nhật 10130053 <br /> Nguyễn Hửu Hiền
+		10130021
+	</h5>
+</body>
+</html>

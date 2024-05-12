@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	 xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTheme.xhtml">
+	<ui:define name="content-header">
+		<section class="content-header">
+			<h1>
+				View Subject <small>Control panel</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#{request.contextPath}/admin/"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li class="active">View Subject</li>
+			</ol>
+		</section>
+	</ui:define>
+	<ui:define name="content-main">
+		<!-- Small boxes (Stat box) -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-success">
+					<div class="box-header">
+						<h3 class="box-title">Subjects</h3>
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+						 <p:growl id="growl" showDetail="true" sticky="true" /> 
+					</div>
+					<div class="box-body">
+						<h:form id="form-view-code">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="btn-group">
+									 <p:commandButton value="View" icon="ui-icon-extlink" styleClass="btn btn-default" action="#{svb.view('v')}" />
+									  <p:commandButton value="Edit" icon="ui-icon-extlink" styleClass="btn btn-default" action="#{svb.view('e')}" />
+									  <p:commandButton value="Edit List Teacher" icon="ui-icon-extlink" styleClass="btn btn-default" action="#{svb.view('ct')}" />
+									</div>
+								</div>
+								<p:dataTable id="viewDT" var="s" value="#{svb.subjects}"  selection="#{svb.select}"  rowKey="#(#{s.subjectNo})}">
+									<p:column selectionMode="multiple" style="width:40px;text-align:center"/>
+									<p:column headerText="Id">
+										<h:outputText value="#{s.subjectNo}" />
+									</p:column>
+									<p:column headerText="Name">
+										<h:outputText value="#{s.subjectName}" />
+									</p:column>
+									<p:column headerText="Teachers">
+										<h:outputText value="#{s.teacher.size()} Teacher" />
+									</p:column>
+
+								</p:dataTable>
+							</div>
+						</h:form>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+
+
+
+			</div>
+		</div>
+		<!-- /.row (main row) -->
+	</ui:define>
+
+
+
+</ui:composition>

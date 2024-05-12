@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+       <h:form>
+       <f:ajax render=":load-content :load-header " >
+       <section class="content-header">
+		<h1>
+			Add Code <small>Manager Code</small>
+		</h1>
+		
+		<ol class="breadcrumb">
+		<li><h:commandLink action="#{loadPageAjax.changeViewPage('dashboard')}" ><i class="fa #{loadPageAjax.page('dashboard').icon}"></i>#{loadPageAjax.page('dashboard').title}</h:commandLink></li>
+			 <li><a href="#?page=1">Manager Code</a></li>
+            
+			<li class="active">Add Code</li>
+		</ol>
+		</section>
+		</f:ajax>
+	</h:form>
+</ui:composition>

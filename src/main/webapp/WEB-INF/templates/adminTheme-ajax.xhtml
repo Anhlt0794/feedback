@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	 <f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="description" content="Feedback online"/>
+		<meta name="author" content="Hien"/>
+		<link rel="shortcut icon" type="image/png"
+			href="#{request.contextPath}/resources/main/images/favicon.ico" />
+	</f:facet>
+	<title>Feedback </title>
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+<h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
+
+<h:outputStylesheet library="primefaces" name="primefaces.css"></h:outputStylesheet>
+<h:outputStylesheet library="webjars" name="bootstrap/3.3.4/css/bootstrap.min.css" ></h:outputStylesheet>
+<h:outputStylesheet library="webjars" name="bootstrap/3.3.4/css/bootstrap-jsf.css"></h:outputStylesheet>
+<h:outputStylesheet library="webjars" name="font-awesome/4.3.0/css/font-awesome-jsf.css" />
+<h:outputStylesheet library="webjars" name="ionicons/2.0.1/css/ionicons.min.css"></h:outputStylesheet>
+
+
+<h:outputStylesheet name="main/dist/css/AdminFB.min.css"></h:outputStylesheet>
+<h:outputStylesheet name="main/dist/css/skins/_all-skins.min.css"></h:outputStylesheet>
+<h:outputStylesheet name="main/css/admin-hien.css"></h:outputStylesheet>
+<h:outputScript library="webjars" name="jquery-ui/1.11.4/jquery-ui.min.js"></h:outputScript>
+<h:outputScript  library="webjars" name="bootstrap/3.3.4/js/bootstrap.min.js"></h:outputScript>
+<h:outputScript name="main/dist/js/effect-title.js"></h:outputScript> 
+</h:head>
+<h:body styleClass="skin-blue  sidebar-mini ">
+
+<ui:insert name="content-main"></ui:insert>
+
+
+
+
+
+<h:outputScript name="main/dist/js/app.min.js"></h:outputScript>
+<h:outputScript name="main/dist/js/demo.js"></h:outputScript> 
+
+</h:body>
+
+</html>

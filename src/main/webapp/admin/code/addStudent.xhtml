@@ -1,0 +1,138 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTheme.xhtml">
+	<ui:define name="content-header">
+		<section class="content-header">
+			<h1>
+				Add Student <small>Manager Code</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#{request.contextPath}/admin/dashboard.html"><i
+						class="fa fa-dashboard"></i>Home</a></li>
+				<li><a href="#{request.contextPath}/admin/code/view.html">Manager Code</a></li>
+				<li><a href="#{request.contextPath}/admin/code/viewCodeDetail.html">View Code</a></li>
+				<li class="active">Add Student</li>
+			</ol>
+		</section>
+	</ui:define>
+	<ui:define name="content-main">
+		<f:metadata>
+			<f:viewParam name="cid" value="#{stab.idCode}"></f:viewParam>
+		</f:metadata>
+		<!-- Small boxes (Stat box) -->
+		<div class="row">
+			<div class="col-md-12">
+				<h:form  id="form-add-code">
+					<div class="box box-primary">
+						<div class="box-header">
+							<h3 class="box-title">New Student</h3>
+							<div class="form-group">
+							<h:outputLabel value="Choose Code:" />
+							<p:selectOneMenu value="#{stab.selectEdit}" converter="#{cc}">
+								<f:selectItems value="#{stab.codeViews}" var="code" itemLabel="#{code.codeNo}" itemValue="#{code}" />
+								<p:ajax listener="#{stab.loadEditTmp()}" ></p:ajax>
+							</p:selectOneMenu>
+							</div>
+							<p:messages id="messages" showDetail="true" autoUpdate="true"
+								closable="true" />
+						</div>
+
+						<div class="box-body">
+							<div class="form-group">
+								<h:outputLabel value="Import File Excel:" />
+								<p:fileUpload fileUploadListener="#{stab.upload()}"
+									mode="advanced" update="messages select-add" auto="true" ></p:fileUpload>
+							</div>
+							
+							<h:panelGroup id="select-add">
+							<div class="form-group" style="#{stab.visitInput}">
+								<h:outputLabel value="ID:" for="No" />
+								<h:inputText styleClass="form-control" id="No" value="#{stab.add.studentNo}"
+									pt:placeholder="10130021" />
+							</div>
+							<div class="form-group" style="#{stab.visitInput}">
+								<h:outputLabel value="Name:" />
+								<h:inputText styleClass="form-control" id="Name" value="#{stab.add.studentName}"
+									pt:placeholder="Nguyễn Hửu Hiền" />
+							</div>
+								<div class="form-group" style="#{stab.visitInput}">
+								<h:outputLabel value="Gender:" />
+								<h:selectOneMenu value="#{stab.add.studentGender}" tyleClass="form-control" >
+									<f:selectItems value="#{tab.gender}"/>
+								</h:selectOneMenu>
+							</div>
+							<div class="form-group" style="#{stab.visitInput}">
+								<h:outputLabel value="Birth Day:" />
+								<h:inputText type="date" styleClass="form-control" id="bd" value="#{stab.add.studentBirthDay}">
+									<f:convertDateTime pattern="dd/MM/yyy"/>  
+								</h:inputText>
+								
+							</div>
+							<div class="form-group" style="#{stab.visitInput}">
+								<h:outputLabel value="Phone:" />
+								<h:inputText styleClass="form-control" id="phone" value="#{stab.add.studentPhone}"
+ 									pt:placeholder="01662464538"  />
+							</div>
+							<div class="form-group" style="#{stab.visitInput}">
+								<h:outputLabel value="Address:" />
+								<h:inputText styleClass="form-control" id="address" value="#{stab.add.studentPhone}" pt:placeholder="123 duong 18"  />
+							</div>
+							<div class="panel panel-default" style="#{stab.visitListCode}">
+								<div class="panel-heading">Choose Student:</div>
+								<p:dataTable id="viewCodeDT" var="st" selection="#{stab.selectAdd}" value="#{stab.selectEditTmp.student}" rowKey="#{st.studentNo}" rows="10" paginator="true"
+                        		 paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} ">
+									<p:column selectionMode="multiple" style="width:40px;text-align:center"/>
+									<p:column headerText="Id">
+										<h:outputText value="#{st.studentNo}" />
+									</p:column>
+									<p:column headerText="Name">
+										<h:outputText value="#{st.studentName}" />
+									</p:column>
+									<p:column headerText="Gender">
+										<h:outputText value="#{st.genderString()}" />
+									</p:column>
+									<p:column headerText="Phone">
+										<h:outputText value="#{st.studentPhone}" />
+									</p:column>
+									<p:column headerText="Birth of Day">
+										<h:outputText value="#{st.studentBirthDay}">
+											<f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Address">
+										<h:outputText value="#{st.studentAddress}" />
+									</p:column>
+
+
+								</p:dataTable>
+							</div>
+							</h:panelGroup>
+						</div>
+						<!-- /.box-body -->
+
+						<div class="box-footer">
+							<p:commandButton action="#{stab.addStudent()}" 
+								styleClass="btn btn-primary" value="Add" update="messages">
+							</p:commandButton>
+							<p:commandButton action="#{stab.cancelStudent()}"
+								styleClass="btn btn-primary" value="Cancel" update="messages select-add">
+							</p:commandButton>
+						</div>
+
+
+
+					</div>
+				</h:form>
+				<!-- /.box -->
+			</div>
+		</div>
+		<!-- /.row (main row) -->
+
+	</ui:define>
+
+</ui:composition>

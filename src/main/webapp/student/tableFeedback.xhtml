@@ -1,0 +1,140 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<h1 align="center">BẢNG THĂM DÒ Ý KIẾN SINH VIÊN VỀ VIỆC DẠY HỌC
+			TRÊN LỚP</h1>
+		<h5 align="center">
+			<b>Nhằm cải tiến và nâng cao chất lượng đào tạo của Khoa ngày
+				càng tốt hơn, chúng tôi mong nhận được những ý kiến đánh giá của các
+				bạn thông qua bản điều tra dưới đây</b>
+		</h5>
+		<p:panel header="Chọc môn học">
+			<p:dataList id="listSub" var="listSub"
+				value="#{subjectBean.stB.student.subjects}" type="unordered"
+				itemType="none" paginator="true" rows="10" styleClass="paginated"
+				lazy="true">
+
+				<p:link>#{listSub.subjectName}--#{listSub.subjectNo}--- <ui:repeat
+						var="teacher" value="#{listSub.teacher}">#{teacher.teacherName}--#{teacher.teacherNo}</ui:repeat>
+				</p:link>
+
+			</p:dataList>
+		</p:panel>
+
+	</h:form>
+	<h1 align="center">---------------------------------------------------------------------</h1>
+	<h:form>
+		<p:wizard flowListener="#{assessmentSubjectBean.onFlowProcess}">
+			<p:tab id="content" title="Phần 1">
+				<p:panel header="PHẦN 1: NỘI DUNG GIẢNG DẠY">
+					<p:dataTable var="fbc" value="#{assessmentSubjectBean.listBackC}"
+						id="datac">
+						<p:column headerText="STT" width="5%">
+							<h:outputText value="#{fbc.position}" />
+						</p:column>
+						<p:column headerText="Nội dung câu hỏi" width="75%">
+							<h:outputText value="#{fbc.question.questionTitle}" />
+						</p:column>
+						<p:column headerText="Điểm" width="25%">
+							<p:rating value="#{fbc.answer}" id="rating">
+								<f:ajax execute="datac"
+									listener="#{assessmentSubjectBean.saveRatingC}"></f:ajax>
+							</p:rating>
+						</p:column>
+					</p:dataTable>
+					<h:outputText value="Skip to last: " />
+					<h:selectBooleanCheckbox value="#{assessmentSubjectBean.skip}" />
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="teachingMethods" title="Phần 2">
+				<p:panel header="PHẦN 2: PHƯƠNG PHÁP GIẢNG DẠY">
+					<p:dataTable var="fbm" value="#{assessmentSubjectBean.listBackM}"
+						id="datam">
+						<p:column headerText="STT" width="5%">
+							<h:outputText value="#{fbm.position}" />
+						</p:column>
+						<p:column headerText="Nội dung câu hỏi" width="75%">
+							<h:outputText value="#{fbm.question.questionTitle}" />
+						</p:column>
+						<p:column headerText="Điểm" width="25%">
+							<p:rating value="#{fbm.answer}" id="rating">
+								<f:ajax execute="datam"
+									listener="#{assessmentSubjectBean.saveRatingM}"></f:ajax>
+							</p:rating>
+						</p:column>
+					</p:dataTable>
+					<h:outputText value="Skip to last: " />
+					<h:selectBooleanCheckbox value="#{assessmentSubjectBean.skip}" />
+				</p:panel>
+			</p:tab>
+			<p:tab id="relationship" title="Phần 3">
+				<p:panel header="PHẦN 3: MỐI QUAN HỆ GIỮA HỌC SINH VÀ GIÁO VIÊN">
+					<p:dataTable var="fbr" value="#{assessmentSubjectBean.listBackR}"
+						id="datar">
+						<p:column headerText="STT" width="5%">
+							<h:outputText value="#{fbr.position}" />
+						</p:column>
+						<p:column headerText="Nội dung câu hỏi" width="75%">
+							<h:outputText value="#{fbr.question.questionTitle}" />
+						</p:column>
+						<p:column headerText="Điểm" width="25%">
+							<p:rating value="#{fbr.answer}" id="rating">
+								<f:ajax execute="datar"
+									listener="#{assessmentSubjectBean.saveRatingR}"></f:ajax>
+							</p:rating>
+						</p:column>
+					</p:dataTable>
+					<h:outputText value="Skip to last: " />
+					<h:selectBooleanCheckbox value="#{assessmentSubjectBean.skip}" />
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="development" title="Phần 4">
+				<p:panel header="PHẦN 4: PHÁT TRIỂN KỸ NĂNG CỦA SINH VIÊN">
+					<p:dataTable var="fbs" value="#{assessmentSubjectBean.listBackS}"
+						id="datas">
+						<p:column headerText="STT" width="5%">
+							<h:outputText value="#{fbs.position}" />
+						</p:column>
+						<p:column headerText="Nội dung câu hỏi" width="75%">
+							<h:outputText value="#{fbs.question.questionTitle}" />
+						</p:column>
+						<p:column headerText="Điểm" width="25%">
+							<p:rating value="#{fbs.answer}" id="rating">
+								<f:ajax execute="datas"
+									listener="#{assessmentSubjectBean.saveRatingS}"></f:ajax>
+							</p:rating>
+						</p:column>
+					</p:dataTable>
+					<h:outputText value="Skip to last: " />
+					<h:selectBooleanCheckbox value="#{assessmentSubjectBean.skip}" />
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="feedbackMore" title="Góp Ý">
+				<p:panel header="PHẦN 5: NHỮNG GÓP Ý KHÁC">
+					<p:editor id="editor" widgetVar="editorWidget"
+						value="#{assessmentSubjectBean.result.resultOpinion}" />
+
+					<p:panelGrid columns="1">
+						<p:commandButton value="Clear" type="button"
+							styleClass="btn btn-primary"
+							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+						<h:commandButton action="#{assessmentSubjectBean.saveOpinion}"
+							styleClass="btn btn-primary" value="Save" />
+					</p:panelGrid>
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+	</h:form>
+</body>
+</html>

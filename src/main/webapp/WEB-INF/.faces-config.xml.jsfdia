@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#admin#code#view.xhtml"
+  PATH="/admin/code/view.xhtml" SHAPE="96,256,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#code#view.xhtml:0" NAME="item"
+   PATH="/admin/code/view.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="viewCodeDetail::#admin#code#viewCodeDetail.xhtml" NAME="output"
+    PATH="/admin/code/viewCodeDetail.xhtml"
+    TARGET="rules:#admin#code#viewCodeDetail.xhtml"
+    TITLE="viewCodeDetail" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="EditCode::#admin#code#EditCode.xhtml"
+    NAME="output1" PATH="/admin/code/EditCode.xhtml"
+    TARGET="rules:#admin#code#EditCode.xhtml" TITLE="EditCode" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editSelect::#admin#code#edit-liststudent-sel.xhtml"
+    NAME="output2" PATH="/admin/code/edit-liststudent-sel.xhtml"
+    TARGET="rules:#admin#code#edit-liststudent-sel.xhtml"
+    TITLE="editSelect" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#code#viewCodeDetail.xhtml"
+  PATH="/admin/code/viewCodeDetail.xhtml" SHAPE="440,352,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#code#viewCodeDetail.xhtml:0"
+   NAME="item" PATH="/admin/code/viewCodeDetail.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="view::#admin#code#view.xhtml" NAME="output"
+    PATH="/admin/code/view.xhtml" TARGET="rules:#admin#code#view.xhtml"
+    TITLE="view" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addStudent::#admin#code#addStudent.xhtml"
+    NAME="output1" PATH="/admin/code/addStudent.xhtml"
+    TARGET="rules:#admin#code#addStudent.xhtml" TITLE="addStudent" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#code#EditCode.xhtml"
+  PATH="/admin/code/EditCode.xhtml" SHAPE="400,216,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#code#EditCode.xhtml:0" NAME="item"
+   PATH="/admin/code/EditCode.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="view::#admin#code#view.xhtml" NAME="output"
+    PATH="/admin/code/view.xhtml" TARGET="rules:#admin#code#view.xhtml"
+    TITLE="view" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#code#edit-liststudent-sel.xhtml"
+  PATH="/admin/code/edit-liststudent-sel.xhtml" SHAPE="147,426,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#admin#subject#view.xhtml"
+  PATH="/admin/subject/view.xhtml" SHAPE="120,504,50,73" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#subject#view.xhtml:0" NAME="item"
+   PATH="/admin/subject/view.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#admin#subject#edit.xhtml"
+    NAME="output" PATH="/admin/subject/edit.xhtml"
+    TARGET="rules:#admin#subject#edit.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="edit-teachers::#admin#subject#edit-teachers.xhtml"
+    NAME="output1" PATH="/admin/subject/edit-teachers.xhtml"
+    TARGET="rules:#admin#subject#edit-teachers.xhtml"
+    TITLE="edit-teachers" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="view-detail::#admin#subject#view-detail.xhtml" NAME="output2"
+    PATH="/admin/subject/view-detail.xhtml"
+    TARGET="rules:#admin#subject#view-detail.xhtml" TITLE="view-detail" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#subject#edit.xhtml"
+  PATH="/admin/subject/edit.xhtml" SHAPE="368,512,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#admin#subject#view-detail.xhtml"
+  PATH="/admin/subject/view-detail.xhtml" SHAPE="368,464,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#admin#subject#edit-teachers.xhtml"
+  PATH="/admin/subject/edit-teachers.xhtml" SHAPE="368,568,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#welcome.xhtml" PATH="/welcome.xhtml"
+  SHAPE="568,56,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#welcome.xhtml:0" NAME="item"
+   PATH="/welcome.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="manager::#admin#dashboard.xhtml"
+    NAME="output" PATH="/admin/dashboard.xhtml"
+    TARGET="rules:#admin#dashboard.xhtml" TITLE="manager" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="student::#student#student.xhtml"
+    NAME="output1" PATH="/student/student.xhtml"
+    TARGET="rules:#student#student.xhtml" TITLE="student" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="teacher::#teacher#teacher.xhtml"
+    NAME="output2" PATH="/teacher/teacher.xhtml"
+    TARGET="rules:#teacher#teacher.xhtml" TITLE="teacher" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#dashboard.xhtml"
+  PATH="/admin/dashboard.xhtml" SHAPE="76,61,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#dashboard.xhtml:0" NAME="item"
+   PATH="/admin/dashboard.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="welcome::#welcome.xhtml" NAME="output"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="welcome" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#admin#login.xhtml" NAME="output1"
+    PATH="/admin/login.xhtml" TARGET="rules:#admin#login.xhtml"
+    TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#login.xhtml" PATH="/admin/login.xhtml"
+  SHAPE="32,160,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#login.xhtml:0" NAME="item"
+   PATH="/admin/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="dashboard::#admin#dashboard.xhtml"
+    NAME="output" PATH="/admin/dashboard.xhtml"
+    TARGET="rules:#admin#dashboard.xhtml" TITLE="dashboard" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#student#student.xhtml"
+  PATH="/student/student.xhtml" SHAPE="784,96,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#teacher#teacher.xhtml"
+  PATH="/teacher/teacher.xhtml" SHAPE="753,172,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#admin#code#addStudent.xhtml"
+  PATH="/admin/code/addStudent.xhtml" SHAPE="776,272,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

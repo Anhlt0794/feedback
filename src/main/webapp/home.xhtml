@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body>
+    	<h:form>
+    		<p:dataList value="#{managerBean.list}" var="mn" type="ordered">
+        	
+        		#{mn.managerName}, #{mn.managerPass}
+    		</p:dataList>
+    	</h:form>
+    	#{loadPageAjax.view.uri}
+    	<a href="admin/admin.html">admin</a>
+    	<a href="student/student.html">Student</a>
+    	<a href="teacher/teacher.html">Teacher</a>
+    	
+</body> 
+</html>

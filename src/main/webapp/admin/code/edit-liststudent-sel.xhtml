@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTheme.xhtml">
+	<ui:define name="content-header">
+		<section class="content-header">
+			<h1>
+				Edit List<small>View Code</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#{request.contextPath}/admin/"><i
+						class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#{request.contextPath}/admin/code/view.html">View
+						Code</a></li>
+				<li class="active">Edit List</li>
+			</ol>
+		</section>
+	</ui:define>
+	<ui:define name="content-main">
+		<!-- Small boxes (Stat box) -->
+		<div class="row">
+			<div class="col-md-12">
+			<h:form>
+				<div class="box box-primary">
+					<div class="box-header">
+						<p:selectOneMenu value="#{vcb.selectEdit}" converter="#{cc}">
+								<f:selectItems value="#{vcb.selectView}" var="code" itemLabel="#{code.codeNo}" itemValue="#{code}" />
+								<p:ajax update="view-list-student"></p:ajax>
+							</p:selectOneMenu>
+
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" />
+					</div>
+
+					<div class="box-body">
+						<h:panelGroup id="view-list-student">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="btn-group">#{vcb.selectEdit.codeNo} - #{vcb.selectEdit.codeName}
+									</div>
+								</div>
+								<p:dataTable id="viewCodeDT" var="st" selection="#{vcb.selectEditStudent}" value="#{vcb.selectEdit.student}"
+									rowKey="#{st.studentNo}">
+									<p:column selectionMode="multiple" style="width:40px;text-align:center"/>
+									<p:column headerText="Id">
+										<h:outputText value="#{st.studentNo}" />
+									</p:column>
+									<p:column headerText="Name">
+										<h:outputText value="#{st.studentName}" />
+									</p:column>
+									<p:column headerText="Email">
+										<h:outputText value="#{st.studentEmail}" />
+									</p:column>
+									<p:column headerText="Gender">
+										<h:outputText value="#{st.genderString()}" />
+									</p:column>
+									<p:column headerText="Phone">
+										<h:outputText value="#{st.studentPhone}" />
+									</p:column>
+									<p:column headerText="Birth of Day">
+										<h:outputText value="#{st.studentBirthDay}">
+											<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Address">
+										<h:outputText value="#{st.studentAddress}" />
+									</p:column>
+
+
+								</p:dataTable>
+							</div>
+							</h:panelGroup>
+					</div>
+				</div>
+				</h:form>
+			</div>
+		</div>
+
+		<!-- /.row (main row) -->
+	</ui:define>
+
+
+
+</ui:composition>

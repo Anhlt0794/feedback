@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTheme.xhtml">
+	<ui:define name="content-header">
+		<section class="content-header">
+			<h1>
+				Add Code <small>Manager Code</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#{request.contextPath}/admin/dashboard.html"><i
+						class="fa fa-dashboard"></i>Home</a></li>
+				<li><a href="#">Manager Code</a></li>
+				<li class="active">Add Code</li>
+			</ol>
+		</section>
+	</ui:define>
+	<ui:define name="content-main">
+		<!-- Small boxes (Stat box) -->
+		<div class="row">
+			<div class="col-md-12">
+				<h:form  id="form-add-code">
+					<div class="box box-primary">
+						<div class="box-header">
+							<h3 class="box-title">New Code</h3>
+							<p:messages id="messages" showDetail="true" autoUpdate="true"
+								closable="true" />
+						</div>
+
+						<div class="box-body">
+							<div class="form-group">
+								<h:outputLabel value="Import File Excel:" />
+								<p:fileUpload fileUploadListener="#{acb.upLoadFile}"
+									mode="advanced" update="messages select-add-code" auto="true" ></p:fileUpload>
+							</div>
+							
+							<h:panelGroup id="select-add-code">
+							<div class="form-group" style="#{acb.visitInput}">
+								<h:outputLabel value="Code ID:" for="codeNo" />
+								<h:inputText styleClass="form-control" id="codeNo"
+									pt:placeholder="DH10DT" />
+							</div>
+							<div class="form-group" style="#{acb.visitInput}">
+								<h:outputLabel value="Code Name:" />
+								<h:inputText styleClass="form-control" id="codeName"
+									pt:placeholder="Công Nghệ Thông Tin 2010" />
+							</div>
+
+							<div class="panel panel-default" style="#{acb.visitListCode}">
+								<div class="panel-heading">Choose Code:</div>
+								<p:dataTable var="code"  value="#{acb.codesAdd}" id="table-add-code"
+								selection="#{acb.selectedCode}" rowKey="#{code.codeNo}"
+								style="margin-bottom:0">
+								
+								<p:column selectionMode="multiple"
+									style="width:40px;text-align:center" />
+								<p:column headerText="Code ID" style="width:15%;text-align:center" >
+									<h:outputText value="#{code.codeNo}" />
+								</p:column>
+								<p:column headerText="Code Name" style="width:50%" >
+									<h:outputText value="#{code.codeName}" />
+								</p:column>
+									<p:column headerText="Total Student" style="width:15%;text-align:center" >
+									<h:outputText value="#{code.student.size()}" />
+								</p:column>
+							<p:column headerText="Student added" style="width:15%;text-align:center">
+							</p:column>
+								
+							</p:dataTable>
+							</div>
+							</h:panelGroup>
+							
+
+						</div>
+						<!-- /.box-body -->
+
+						<div class="box-footer">
+							<p:commandButton action="#{acb.addCode}"
+								styleClass="btn btn-primary" value="Add" update="messages">
+							</p:commandButton>
+						</div>
+
+
+
+					</div>
+				</h:form>
+				<!-- /.box -->
+			</div>
+		</div>
+		<!-- /.row (main row) -->
+
+	</ui:define>
+
+</ui:composition>

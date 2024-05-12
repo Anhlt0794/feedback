@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<p:panel header="Danh sách các môn học đã đánh giá">
+			<p:dataList id="listSub" var="listSub"
+				value="#{subjectBean.stB.student.subjects}" type="unordered"
+				itemType="none" paginator="true" rows="10" styleClass="paginated"
+				lazy="true">
+
+				<p:link>#{listSub.subjectName}--#{listSub.subjectNo}--- <ui:repeat
+						var="teacher" value="#{listSub.teacher}">#{teacher.teacherName}--#{teacher.teacherNo}</ui:repeat>
+				</p:link>
+
+			</p:dataList>
+		</p:panel>
+		<p:panel header="Danh sách các câu hỏi">
+			<p:dataTable var="qt" value="#{assessmentSubjectBean.listBack}"
+				id="datac">
+				<p:column headerText="STT" width="5%">
+					<h:outputText value="#{qt.position}" />
+				</p:column>
+				<p:column headerText="Nội dung câu hỏi" width="75%">
+					<h:outputText value="#{qt.question.questionTitle}" />
+				</p:column>
+				<p:column headerText="Điểm" width="25%">
+					<p:rating value="#{qt.answer}" id="rating">
+					</p:rating>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</body>
+</html>
