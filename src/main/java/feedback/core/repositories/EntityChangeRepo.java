@@ -5,7 +5,7 @@ import org.hibernate.criterion.Criterion;
 import java.util.Collection;
 
 /**
- * Created by Hien on 5/19/2015.
+ * Created by Anh on 12/19/2023.
  */
 public interface EntityChangeRepo {
     <T> Collection<T> queryAll(Class<T> class1);

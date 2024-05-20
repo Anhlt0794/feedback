@@ -25,8 +25,8 @@ import feedback.core.models.entities.Student;
 import feedback.core.models.entities.Subject;
 
 public class FacesUtil {
-	public static final String EMAIL_STUDENT_EX="@st.hcmuaf.edu.vn";
-	public static final String EMAIL_TEACHER_EX="@hcmuaf.edu.vn";
+	public static final String EMAIL_STUDENT_EX="@hutech.edu.vn";
+	public static final String EMAIL_TEACHER_EX="@hutech.edu.vn";
 	public static FacesContext getFacesContext() {
 		return FacesContext.getCurrentInstance();
 	}

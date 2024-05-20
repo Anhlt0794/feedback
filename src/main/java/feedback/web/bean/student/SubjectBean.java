@@ -33,11 +33,13 @@ public class SubjectBean {
 	@PostConstruct
 	public void init() {
 		HKs = new ArrayList<SelectItem>();
-		HKs.add(new SelectItem("HK1-15"));
-		HKs.add(new SelectItem("HK2-15"));
-		HKs.add(new SelectItem("HK3-15"));
-		HKs.add(new SelectItem("HK1-16"));
-		HKs.add(new SelectItem("HK2-16"));
+		HKs.add(new SelectItem("HK1-22"));
+		HKs.add(new SelectItem("HK2-22"));
+		HKs.add(new SelectItem("HK1-22"));
+		HKs.add(new SelectItem("HK2-23"));
+		HKs.add(new SelectItem("HK3-23"));
+		HKs.add(new SelectItem("HK1-24"));
+		HKs.add(new SelectItem("HK2-24"));
 		
 		listSubject = viewSubjectServer.loadAllSubject();
 		
